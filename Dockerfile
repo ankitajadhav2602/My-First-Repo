@@ -1,11 +1,14 @@
-# Use official Python base image
-FROM python:3.11-slim
+# Use Alpine Linux as base image
+FROM alpine:latest
 
-# Set working directory inside the container
+# Install Python and required packages
+RUN apk add --no-cache python3 py3-pip
+
+# Set working directory
 WORKDIR /app
 
-# Copy Hello_World.py into the container
+# Copy your Python script into the container
 COPY Hello_World.py .
 
 # Run the script
-CMD ["python", "Hello_World.py"]
+CMD ["python3", "Hello_World.py"]
