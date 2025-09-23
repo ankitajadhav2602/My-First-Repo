@@ -1,15 +1,13 @@
-# Use OpenJDK base image
-FROM openjdk:17-alpine
+# Use a slim Python base image
+FROM python:3.12-slim
 
 # Set working directory
 WORKDIR /app
 
-# Copy Java source file
-COPY HelloJava.java .
+# Copy the Python script
+COPY app.py .
 
-# Compile the Java program
-RUN javac HelloJava.java
+# Run the script
+CMD ["python", "app.py"]
 
-# Run the compiled Java program
-CMD ["java", "HelloJava"]
 
